@@ -22,26 +22,27 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={IntroScreen}/>
-        <Stack.Screen name="Squat" component={Squats} />
-        <Stack.Screen name="Deadlift" component={Deadlift} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="About" component={About}/>
+        <Stack.Screen name="MainScreen" component={MainScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-  
+
 const IntroScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Header text='Get Swole. The App.'/>
-      <Text>This is a fitness app that looks at your form in real time and guides you on the perfect squat!</Text>
-      <Button title="Learn to Squat"
+      <Header text='Music Sharing'/>
+      <Text>Connect with your friends!</Text>
+      <Button title="Sign in"
         onPress={() =>
-          navigation.navigate('Squat', { name: 'Learn to Squat' })
+          navigation.navigate('SignIn', { name: 'Sign in' })
         }/>
-      <Button title="Learn to Deadlift"
+      <Button title="SignUp"
         onPress={() =>
-          navigation.navigate('Deadlift', {name: 'Learn to Deadlift'})
+          navigation.navigate('SignUp', {name: 'SignUp'})
         }/>
       <Button title="About"
         onPress={() =>
@@ -50,29 +51,31 @@ const IntroScreen = ({ navigation }) => {
     </View>
   );
 };
-const Squats = ({ navigation, route }) => {
+const SignIn = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
-      <Image
-          style= {styles.logo}
-          source={{
-            uri: 'https://myfamilychiropractor.com.au/wp-content/uploads/2015/04/squats.png',
-          }}
-      />
-      <Text>Here is good form</Text>
+      <Text>SignIn</Text>
+      <Button title="Confirm"
+        onPress={() =>
+          navigation.navigate('MainScreen', {name: 'MainScreen'})
+        }/>
     </View>
   )
 };
-const Deadlift = ({ navigation, route }) => {
+const MainScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
-      <Image
-          style= {styles.logo}
-          source={{
-            uri: 'https://i1.wp.com/physicalculturestudy.com/wp-content/uploads/2016/01/romaniandeadlift1.jpg?resize=563%2C331&ssl=1',
-          }}
-      />
-      <Text>Here is good form</Text>
+      <Text>Main Page</Text>
+      <Button title="Listen to Music"/>
+      <Button title="Send Requests"/>
+      <Button title="View Friend Reviews"/>
+    </View>
+  )
+};
+const SignUp = ({ navigation, route }) => {
+  return (
+    <View style={styles.container}>
+      <Text>SignUp</Text>
     </View>
   )
 };
@@ -81,8 +84,7 @@ const About = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Created by Daniel Lay</Text>
-      <Text>Email: dlay@brandeis.edu</Text>
+      <Text>Created by Team2</Text>
       <SafeAreaView>
         <TextInput
           style={styles.input}
