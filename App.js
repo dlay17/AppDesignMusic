@@ -4,6 +4,8 @@ import { Button, StyleSheet, Text, View, Image, TextInput, SafeAreaView  } from 
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SignUpScreen from './components/Signup'
+import Daniel from './components/DanielProfile'
 
 const Stack = createStackNavigator();
 
@@ -25,7 +27,9 @@ const App = () => {
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="About" component={About}/>
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen}/>
         <Stack.Screen name="MainScreen" component={MainScreen}/>
+        <Stack.Screen name="DanielLay" component={Daniel}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -74,9 +78,7 @@ const MainScreen = ({ navigation, route }) => {
 };
 const SignUp = ({ navigation, route }) => {
   return (
-    <View style={styles.container}>
-      <Text>SignUp</Text>
-    </View>
+    <SignUpScreen/>
   )
 };
 const About = ({ navigation, route }) => {
@@ -84,6 +86,11 @@ const About = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+      <Text>View Profiles of the developers</Text>
+      <Button title="Profiles"
+        onPress={() =>
+          navigation.navigate('ProfileScreen', { name: 'ProfileScreen' })
+        }/>
       <Text>Created by Team2</Text>
       <SafeAreaView>
         <TextInput
@@ -95,6 +102,16 @@ const About = ({ navigation, route }) => {
     </View>
   )
 };
+const ProfileScreen = ({ navigation, route }) => {
+  return (
+    <View style={styles.container}>
+      <Button title="Daniel Lay"
+        onPress={() =>
+          navigation.navigate('DanielLay', { name: 'DanielLay' })
+        }/>
+    </View>
+  )
+}
 export default App;
 
 const styles = StyleSheet.create({
